@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>TOMORU</title>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<link href="css/style.css" rel="stylesheet">
+<script src="js/script.js"></script>
+</head>
+<body>
+	<!-- header(ナビ) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">TOMORU</a>
+			</div>
+			<form method="post" th:action="@{/logout}">
+				<button class="btn btn-link pull-right navbar-brand" type="submit">ログアウト</button>
+			</form>
+		</div>
+	</nav>
+	
+	<!-- said Main-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2 sidebar">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="ist-group-item" th:each="category:${categoryList}">
+					<form method="post" th:action="@{/mainList}">
+						<button  class="btn btn-link" name="categoryName" th:value="${category}" th:text="${category}"></button>
+					</form>
+					</li>
+					<li class="ist-group-item" sec:authorize="hasRole('ADMIN')">
+						<a th:href="@{'/adminList'}">管理画面</a>
+					</li>
+				</ul>	
+			</div>
+			<div class="col-sm-10　main">
+				<div th:include="__${contents}__"></div>
+			</div>
+		</div>
+	</div>
+	<div class="fixed-bottom hooter">
+		<div class="container-fluid text-right" th:if="${list_size > 0}">
+			<a th:href="@{'/cart'}" class="btn btn-primary btn-lg">カートを確認する<span th:text="${list_size}" class="btn btn-danger"></span></a>
+		</div>
+		<div th:if="${productList} != null">
+			<a th:href="@{'/check'}" class="btn btn-primary btn-lg btn_check">お会計</a>
+		</div>
+	</div>
+</body>
+</html>

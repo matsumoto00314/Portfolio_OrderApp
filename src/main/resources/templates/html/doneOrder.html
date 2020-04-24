@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="doneOrder_contents">
+		<h1 th:text="${successMsg}"></h1>
+		<a th:href="@{'/index'}">メニューに戻る</a>
+	</div>
+</body>
+</html>

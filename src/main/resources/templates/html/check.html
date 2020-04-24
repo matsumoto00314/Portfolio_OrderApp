@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="check_contents">
+		<form method="post" action="divide">
+			<table class="table table-hover">	
+				<tr>
+					<th class="text-center th_white">品物</th>
+					<th class="text-center th_white">金額</th>
+					<th></th>
+				</tr>
+				<tr th:each="list : ${list}">
+					<td th:text="${list.foodName}" class="td_white"></td>
+					<td th:text="${list.foodValue}" class="td_white"></td>
+					<td><input type="radio" name="foodId" id="foodId" th:value="${list.foodId}"></td>
+				</tr>
+			</table>
+			<div th:if="${list.size()} != 0">
+				<input type="submit" name="paid" class="btn">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

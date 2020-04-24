@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="adminList_contents">
+		<h1>管理画面</h1>
+		<div th:if="${successMsg} != null">
+			<p th:text="${successMsg}"></p>
+		</div>
+		<form method="post" th:action="@{/admin}" th:object="${product}" enctype="multipart/form-data">
+			<p>商品の追加</p>
+			<table class="table">
+				<tr>
+					<td class="td_admin">カテゴリー</td>
+					<td><select name="categoryName" class="select" >
+					<option th:each="category:${categoryList}" th:value="${category}" th:text="${category}"></option>
+					</select>
+					<a th:href="@{'/category'}">カテゴリー追加</a></td>
+				</tr>
+				<tr>
+					<td class="td_admin">商品名</td>
+					<td><input type="text" name="productName" th:field="*{productName}"></td>			
+				</tr>
+				<tr>
+					<td class="td_admin">金額</td>
+					<td><input type="text" name="productValue" th:field="*{productValue}"></td>		
+				</tr>
+				<tr>
+					<td class="td_admin">画像</td>
+					<td><input type="file" name="image" th:field="*{image}" class="file"></td>					
+				</tr>
+			</table>
+			<input type="submit" value="登録する">
+		</form>
+	</div>
+</body>
+</html>

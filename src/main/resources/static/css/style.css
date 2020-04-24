@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body{
+	padding-top:100px;
+	text-align:center;
+	background-color:#222222
+}
+
+h1,p,.td_admin,.th_white,.td_white,span,label,.file{
+	color:white;
+}
+
+.file{
+	margin-left:310px;
+}
+
+.btn_check{
+	margin-top:50px;
+	margin-left:1200px;
+	width:150px;
+}
+
+.select{
+	margin-left:50px;
+	width:100px;
+}
+.order_btn{
+	height:100px;
+	width:100px;
+	margin:10px 10px;
+}
+.table{
+	width:900px;
+	margin:0 auto;
+}
+
+li{
+	font-size:35px;		
+}
+
+.color{
+	background-color:white;
+}
+
+.hooter{
+	margin-top:50px;
+}

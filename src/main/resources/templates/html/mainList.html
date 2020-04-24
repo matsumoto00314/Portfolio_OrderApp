@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="mainList_contents">
+		<form method="post" th:action="@{food}">
+				<input type="hidden" name="categoryName" th:value="${productList[0].productCategory}">
+			<table>
+				<tr>
+					<td th:each="pList : ${productList}">
+						<button class="btn order_btn btn_list" name="foodId" th:value="${pList.productId}"
+						 th:style="|background:url('/img/${pList.productImageName}'); background-size:cover;|"></button>
+						<p th:text="${pList.productName}"></p>
+						<P th:text="${pList.productValue}+'円'" ></p>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>TOMORU</title>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<a th:href="@{'login'}" class="text-right btn">ログイン</a>
+	<h1>MAIN MENU</h1>
+	<form method="post" action="/main">
+	<input type="hidden" name="userId" value="GUEST">
+	<input type="hidden" name="password" value="password">
+	<button type="submit">ENTER</button>
+	</form>
+</body>
+</html>

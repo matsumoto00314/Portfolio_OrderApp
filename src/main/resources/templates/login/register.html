@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+	<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+	<link href="css/style.css" rel="stylesheet">
+	<title>新規登録</title>
+</head>
+<body>
+	<h1>新規登録</h1>
+	<form method="post" action="/register" th:object="${register}">
+		
+	<label>ユーザーID</label>
+	<input type="text" name="userId" th:field="*{userId}"><br/>
+
+	<label>パスワード</label>
+	<input type="password" name="password" th:field="*{password}"><br/><br/>
+	
+	<button type="submit" class="btn btn-primary">新規登録</button>
+	</form>
+</body>
+</html>
