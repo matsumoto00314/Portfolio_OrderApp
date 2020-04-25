@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -18,6 +20,7 @@ public class Product {
 	private String productCategory;
 
 	//商品名
+	@NotBlank
 	private String productName;
 	
 	//商品金額
@@ -26,5 +29,6 @@ public class Product {
 	//商品画像
 	private MultipartFile image;
 	
+	//商品画像名
 	private String productImageName;
 }

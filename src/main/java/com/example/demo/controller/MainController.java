@@ -26,7 +26,7 @@ public class MainController {
 	OrderService service;
 	
 	/**
-	 * カテゴリーをセットする
+	 * カテゴリーの各値をセットする
 	 * @return　カテゴリー
 	 */
 	@ModelAttribute("categoryList")
@@ -41,10 +41,16 @@ public class MainController {
 	 */
 	@PostMapping("/mainList")
 	public String postMainList(@RequestParam("categoryName")String categoryName,Model model) {
-		System.out.println(categoryName);
+		
+		//カテゴリーの値を元にメニューを受け取りセット
 		model.addAttribute("productList",service.selectProduct(categoryName));
+		
+		//注文前テーブルの内容数をセット
 		model.addAttribute("list_size",service.selectBeforeAll().size());
+		
+		//各メニューリストを表示する
 		model.addAttribute("contents","html/mainList::mainList_contents");
+
 		return "html/main";
 	}
 	/**
@@ -55,7 +61,10 @@ public class MainController {
 	 */
 	@GetMapping("/adminList")
 	public String getAdmin(@ModelAttribute Product product,Model model) {
+		
+		//管理画面へのhtmlをセット
 		model.addAttribute("contents","html/adminList::adminList_contents");
+	
 		return "html/main";
 	}
 }

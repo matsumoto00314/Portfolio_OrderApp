@@ -9,7 +9,10 @@ import lombok.Data;
 @Data
 public class Register {
 
+	//ユーザーID
 	private String userId;
+	
+	//パスワード
 	private String password;
 
 }

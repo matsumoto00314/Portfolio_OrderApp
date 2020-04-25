@@ -40,6 +40,7 @@ public class FirstController {
 	 */
 	@GetMapping("/index")
 	public String getIndex() {
+		
 		return "html/index";
 	}
 	
@@ -49,6 +50,7 @@ public class FirstController {
 	 */
 	@GetMapping("/login")
 	public String getLogin() {
+		
 		return "login/login";
 	}
 	/**
@@ -58,8 +60,13 @@ public class FirstController {
 	 */
 	@PostMapping("/main")
 	public String getMain(Model model) {
+		
+		//注文前テーブルの内容数をセット
 		model.addAttribute("list_size",service.selectBeforeAll().size());
+		
+		//注文メニュー初期ページのhtmlをセット
 		model.addAttribute("contents","html/hello::hello_contents");
+		
 		return "html/main";
 	}
 	
@@ -70,6 +77,7 @@ public class FirstController {
 	 */
 	@GetMapping("/register")
 	public String getRegister(@ModelAttribute Register register) {
+	
 		return "login/register";
 	}
 	
@@ -81,10 +89,17 @@ public class FirstController {
 	 */
 	@PostMapping("/register")
 	public String postRegister(@ModelAttribute Register register,BindingResult bindingResult) {
+		
+		//バインドエラーが合った場合
 		if(bindingResult.hasErrors()) {
+			
+			//ユーザー登録画面へ遷移
 			return getRegister(register);
 		}
+		
+		//ユーザー登録処理を行う
 		service.insertRegister(register);
+		
 		return "redirect:login";
 	}
 	

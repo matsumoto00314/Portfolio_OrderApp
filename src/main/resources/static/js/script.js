@@ -1,12 +1,12 @@
 $(function(){
-	
-	//return結果を代入する
-	var result = false;
-	
+
 	/*
 	 * 削除チェックを行う
 	 */
 	$('input[name="delete"]').on('click',function(){
+		
+		//return結果を代入する
+		var result = false;
 		
 		//ラジオボタンにチェックがあった場合
 		if($("input[name='foodId']:checked").val()){
@@ -24,4 +24,6 @@ $(function(){
 		//結果に応じて遷移先をコントロール
 		return result;
 	});
+	
+	
 });
